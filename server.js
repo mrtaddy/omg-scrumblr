@@ -7,12 +7,14 @@ var	async = require('async');
 var sanitizer = require('sanitizer');
 var compression = require('compression');
 var express = require('express');
+var basicAuth = require('basic-auth-connect');
 
 /**************
  LOCAL INCLUDES
 **************/
 var	rooms	= require('./lib/rooms.js');
 var	data	= require('./lib/data.js').db;
+var conf  = require('./config.js').server;
 
 /**************
  GLOBALS
@@ -27,9 +29,12 @@ var app = express();
 
 app.use(compression());
 app.use(express.static(__dirname + '/client'));
+if (typeof conf.username != "undefined" && conf.username !== null) {
+  app.use(basicAuth(conf.username, conf.password));
+}
 
 var server = require('http').Server(app);
-var port = process.argv[2] || 8080;
+var port = process.argv[2] || conf.port || 8080;
 server.listen(port);
 
 console.log('Server running at http://127.0.0.1:' + port + '/');
