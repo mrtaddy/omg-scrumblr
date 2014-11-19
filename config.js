@@ -7,6 +7,7 @@
 */
 
 exports.database = {
+	url: process.env.REDIS_URL,
 	type: 'redis',
 	prefix: '#scrumblr#'
 };
