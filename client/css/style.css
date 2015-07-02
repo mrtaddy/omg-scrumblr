@@ -592,6 +592,20 @@ img {
 
 
 
+#card-yellow.fa-plus-circle:before {
+	color: orange
+}
+#card-green.fa-plus-circle:before {
+	color: green
+}
+#card-blue.fa-plus-circle:before {
+	color: blue
+}
+#card-white.fa-plus-circle:before {
+	color: black
+}
+
+
 
 /* states and images */
 .ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_222222_256x240.png); }
