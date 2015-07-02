@@ -245,7 +245,7 @@ function drawNewCard(id, text, x, y, rot, colour, sticker, animationspeed) {
     var speed = Math.floor(Math.random() * 1000);
     if (typeof(animationspeed) != 'undefined') speed = animationspeed;
 
-    var startPosition = $("#create-card").position();
+    var startPosition = $(".create-card").position();
 
     card.css('top', startPosition.top - card.height() * 0.5);
     card.css('left', startPosition.left - card.width() * 0.5);
@@ -691,17 +691,18 @@ $(function() {
     //setTimeout($.unblockUI, 2000);
 
 
-    $("#create-card")
+    $(".create-card")
         .click(function() {
+            var cardColour = this.id.split('-')[1]; // card-yelow => yellow
             var rotation = Math.random() * 10 - 5; //add a bit of random rotation (+/- 10deg)
             uniqueID = Math.round(Math.random() * 99999999); //is this big enough to assure uniqueness?
             //alert(uniqueID);
             createCard(
                 'card' + uniqueID,
                 '',
-                58, $('div.board-outline').height(), // hack - not a great way to get the new card coordinates, but most consistant ATM
+                200, $('div.board-outline').height(), // hack - not a great way to get the new card coordinates, but most consistant ATM
                 rotation,
-                randomCardColour());
+                cardColour);
         });
 
 
